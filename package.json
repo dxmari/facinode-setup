@@ -1,0 +1,22 @@
+{
+  "name": "facinode-setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dxmari/facinode.git"
+  },
+  "author": "Mariselvam",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dxmari/facinode/issues"
+  },
+  "homepage": "https://github.com/dxmari/facinode#readme",
+  "dependencies": {
+    "mongoose": "^5.6.8"
+  }
+}
