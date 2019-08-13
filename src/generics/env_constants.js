@@ -8,7 +8,6 @@ dotenv.load({
     example: path.join(__dirname, '../../.env'),
     sample: path.join(__dirname, '../../.env.example'),
 });
-console.log(process.env.NODE_ENV)
 
 module.exports = {
     env: process.env.NODE_ENV,
