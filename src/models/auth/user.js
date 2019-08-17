@@ -14,12 +14,17 @@ var user_schema = Schema({
         maxlength: 254,
         default: null
     },
-    email: {
+    username: {
         type: String,
         trim: true,
         maxlength: 254,
         unique: true,
         required: true
+    },
+    email: {
+        type: String,
+        trim: true,
+        maxlength: 254
     },
     password: {
         type: String,
