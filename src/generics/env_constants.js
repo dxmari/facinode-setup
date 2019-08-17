@@ -1,6 +1,6 @@
 'use strict';
-const { dotenv, path } = require('./../../facy-imports');
-
+const path = require('path')
+const dotenv = require('dotenv-safe')
 /**
  * Import environment varibles
  */
