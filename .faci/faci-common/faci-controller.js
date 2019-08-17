@@ -1,5 +1,9 @@
-const { path, fs, Cryptr, ENV_CONSTANTS } = require('./../../facy-imports');
-const { secret } = ENV_CONSTANTS;
+const path = require('path');
+const fs = require('fs');
+const Cryptr = require('cryptr');
+
+const { secret } = require('../../src/generics/env_constants')
+
 var options = {
     upsert: true,
     new: true,
@@ -46,17 +50,15 @@ const createSuperAdminUser = (projectDetails) => {
     const { User } = require('./../../facy-imports');
     return new Promise((resolve, reject) => {
         var params = {
+            username: projectDetails.username,
             email: projectDetails.email,
             password: projectDetails.password,
-            first_name: projectDetails.first_name,
-            last_name: projectDetails.last_name || '',
             is_super_admin: true
         }
         User.findOneAndUpdate({
-            email: projectDetails.email,
+            username: projectDetails.username,
             is_super_admin: true
         }, params, options).then((user) => {
-            console.log(user);
             resolve(user);
         }).catch(err => {
             console.log(err);
@@ -65,7 +67,7 @@ const createSuperAdminUser = (projectDetails) => {
     })
 }
 
-const authKey = function randomString(len) {
+exports.authKey = function randomString(len) {
     var p = "abcdefghijklmnopqrstuvwxyz0123456789";
     return [...Array(len)].reduce(a => a + p[~~(Math.random() * p.length)], '');
 };
@@ -81,3 +83,5 @@ const encodeKey = function (key) {
 const decodeKey = function (key) {
     return cryptr.decrypt(key);
 }
+
+exports.createSuperAdminUser = createSuperAdminUser;
