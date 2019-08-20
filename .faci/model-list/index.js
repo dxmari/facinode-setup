@@ -1,0 +1,1 @@
+exports.cities = require('./cities').routes;

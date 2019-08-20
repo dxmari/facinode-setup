@@ -15,8 +15,7 @@ exports.initiate = async () => {
         cryptr = new Cryptr(secret);
     }
     let projectDetails = await getProjectDetails();
-    // await createSuperAdminUser(projectDetails);
-    console.log(projectDetails);
+    // console.log(projectDetails);
 }
 
 const getProjectDetails = () => {
@@ -82,6 +81,33 @@ const encodeKey = function (key) {
 
 const decodeKey = function (key) {
     return cryptr.decrypt(key);
+}
+
+const processRoutes = function (req, res) {
+    let route_name = '';
+    let urlArr = req.url.split('/');
+    let idx = -1;
+    for (let cnt = urlArr.length - 1; cnt > 0; cnt--) {
+        route_name = urlArr[cnt];
+        idx = router.stack.findIndex(e => {
+            if (e.route && e.route.path == route_name) {
+                return true;
+            }
+            return false;
+        });
+        if (idx >= 0) {
+            req.params.id = urlArr[cnt + 1];
+            break;
+        }
+    }
+
+    var result = {
+        path: req.url,
+        method: req.method,
+        param: req.params.id,
+        id: idx
+    }
+    res.json(result);
 }
 
 exports.createSuperAdminUser = createSuperAdminUser;

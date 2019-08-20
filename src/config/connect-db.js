@@ -38,7 +38,6 @@ exports.connect = () => {
                 console.log(err);
                 reject(err);
             } else {
-                console.log("db connected");
                 resolve(mongoose.connection);
             }
         });

@@ -1,7 +1,7 @@
 'use strict';
-const { mongoose, Schema } = require('../../../facy-imports');
+var mongoose = require('mongoose');
 
-var user_schema = Schema({
+var user_schema = mongoose.Schema({
     first_name: {
         type: String,
         trim: true,

@@ -1,7 +1,7 @@
 'use strict';
-const { mongoose, Schema } = require('./../facy-imports');
+var mongoose = require('mongoose');
 
-const tokenSchema = Schema({
+const tokenSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',

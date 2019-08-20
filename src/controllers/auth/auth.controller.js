@@ -1,3 +1,5 @@
 exports.login = (req, res) => {
-    res.send(1);
+    res.send({
+        message: 'success'
+    });
 }
